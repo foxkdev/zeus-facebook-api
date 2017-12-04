@@ -1,0 +1,13 @@
+{
+    "name": "kloppz/zeus-facebook-api",
+    "authors": [
+        {
+            "name": "Carlos Lopez",
+            "email": "cloaction@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+      "php": "^5.3.3 || ^7.0"
+    }
+}
