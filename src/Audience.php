@@ -5,6 +5,7 @@ use Zeus\Facebook\ZeusFacebook;
 
 class Audience extends ZeusFacebook{
   public $account_id = null;
+  public $name = null;
   public $approximate_count = null;
   public $retention_days = null;
   public $data_source = null;
@@ -19,7 +20,7 @@ class Audience extends ZeusFacebook{
     //fields set
     if($fields == null){
       $this->fields = array(
-        'fields' => 'account_id,approximate_count,data_source,retention_days,ads'
+        'fields' => 'account_id,name,approximate_count,data_source,retention_days,ads'
       );
     }else{
       $this->fields = $fields;
@@ -34,6 +35,7 @@ class Audience extends ZeusFacebook{
     return array(
       'id' => $this->id,
       'account_id' => $this->account_id,
+      'name' => $this->name,
       'approximate_count' => $this->approximate_count,
       'retention_days' => $this->retention_days,
       'data_source' => $this->data_source,
@@ -54,11 +56,15 @@ class Audience extends ZeusFacebook{
     }
 
     $resp = $this->curl($this->id, $this->fields);
+    foreach ($resp as $key => $value) {
+      $this->{$key} = $value;
+    }
 
-    $this->retention_days = $resp['retention_days'];
-    $this->data_source = $resp['data_source'];
-    $this->approximate_count = $resp['approximate_count'];
-    $this->account_id = $resp['account_id'];
+    // $this->name = $resp['name'];
+    // $this->retention_days = $resp['retention_days'];
+    // $this->data_source = $resp['data_source'];
+    // $this->approximate_count = $resp['approximate_count'];
+    // $this->account_id = $resp['account_id'];
     // return $resp;
   }
   /**

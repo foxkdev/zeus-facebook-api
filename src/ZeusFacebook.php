@@ -32,10 +32,35 @@ class ZeusFacebook{
     curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
     $response = curl_exec($curl);
     if($response != null){
-      $response = get_object_vars(json_decode($response)); //ESTO HAY QUE MEJORARLO PARA SUBARRAYS SON STDCLASS
+      // $response = get_object_vars(json_decode($response)); //ESTO HAY QUE MEJORARLO PARA SUBARRAYS SON STDCLASS
+      $response = $this->objectToArray(json_decode($response));
     }
     curl_close($curl);
     return $response;
   }
+
+
+  private function arrayCastRecursive($array)
+  {
+      if (is_array($array)) {
+          foreach ($array as $key => $value) {
+              if (is_array($value)) {
+                  $array[$key] = $this->arrayCastRecursive($value);
+              }
+              if ($value instanceof stdClass) {
+                  $array[$key] = null;
+                  // $array[$key] = $this->arrayCastRecursive((array)$value);
+              }
+          }
+      }
+      if ($array instanceof stdClass) {
+          return $this->arrayCastRecursive((array)$array);
+      }
+      return $array;
+  }
+
+  private function objectToArray($array) {
+        return json_decode(json_encode($array, JSON_FORCE_OBJECT), false);
+    }
 }
  ?>
