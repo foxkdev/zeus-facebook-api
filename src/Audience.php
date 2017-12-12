@@ -4,13 +4,21 @@ namespace Zeus\Facebook;
 use Zeus\Facebook\ZeusFacebook;
 
 class Audience extends ZeusFacebook{
+  public $id = null;
   public $account_id = null;
   public $name = null;
+  public $description = null;
   public $approximate_count = null;
+  public $operation_status = null;
+
   public $retention_days = null;
   public $data_source = null;
   public $ads = null;
-  public $id = null;
+
+  public $time_created = null;
+  public $time_updated = null;
+  public $time_content_updated = null;
+
 
   private $fields = null;
 
@@ -20,7 +28,7 @@ class Audience extends ZeusFacebook{
     //fields set
     if($fields == null){
       $this->fields = array(
-        'fields' => 'account_id,name,approximate_count,data_source,retention_days,ads'
+        'fields' => 'account_id,name,approximate_count,data_source,retention_days,ads,description,operation_status,time_created,time_updated,time_content_updated'
       );
     }else{
       $this->fields = $fields;
@@ -36,10 +44,15 @@ class Audience extends ZeusFacebook{
       'id' => $this->id,
       'account_id' => $this->account_id,
       'name' => $this->name,
+      'description' => $this->description,
       'approximate_count' => $this->approximate_count,
       'retention_days' => $this->retention_days,
       'data_source' => $this->data_source,
-      'ads' => $this->ads
+      'ads' => $this->ads,
+      'operation_status' => $this->operation_status,
+      'time_created' => $this->time_created,
+      'time_updated' => $this->time_updated,
+      'time_content_updated' => $this->time_content_updated
     );
   }
 
