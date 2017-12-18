@@ -24,7 +24,9 @@ class Audience extends ZeusFacebook{
 
 
   public function __construct($id = null, $fields = null){
+    parent::__construct();
     $this->id = $id; //set id
+
     //fields set
     if($fields == null){
       $this->fields = array(
