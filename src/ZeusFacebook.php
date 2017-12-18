@@ -15,9 +15,8 @@ class ZeusFacebook{
   private function init(){
     $this->base_url = config('zeus_facebook.base_url');
     $this->token = config('zeus_facebook.access_token');
-
   }
-  protected function setToken($token = null){
+  public function setToken($token = null){
     $this->token = $token;
   }
   protected function curl($url, $fields = array()){
