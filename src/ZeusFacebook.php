@@ -8,16 +8,21 @@ use FacebookAds\Object\AdAccount;
 class ZeusFacebook{
   private $base_url = null;
   private $token = null;
+  private $ad_account = null;
+
   public function __construct(){
     $this->base_url = config('zeus_facebook.base_url');
     $this->token = config('zeus_facebook.access_token');
-  }
-  private function init(){
-    $this->base_url = config('zeus_facebook.base_url');
-    $this->token = config('zeus_facebook.access_token');
+    $this->ad_account = config('zeus_facebook.ad_account_id');
   }
   public function setToken($token = null){
     $this->token = $token;
+  }
+  public function setAdAccount($adAccount){
+    $this->ad_account = $adAccount;
+  }
+  public function getAdAccount(){
+    return $this->ad_account;
   }
   protected function curl($url, $fields = array()){
 
