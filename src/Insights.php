@@ -13,16 +13,12 @@ class Insights extends ZeusFacebook{
 
   }
   /* PUBLIC FUNCTIONS */
-  public function total($date = "last_30d", $sort = []){
+  public function spends($date = "last_30d", $sort = []){
     $this->call($date, $sort, "");
     return $this->toArray();
   }
   public function campaigns($date = "last_30d", $sort = []){
     $this->call($date, $sort, "campaign");
-    return $this->toArray();
-  }
-  public function spends($date = "last_30d", $sort = []){
-    $this->call($date, $sort, "");
     return $this->toArray();
   }
 
