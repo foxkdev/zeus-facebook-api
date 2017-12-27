@@ -37,13 +37,16 @@ class Insights extends ZeusFacebook{
 
     //date preset or range
     if(is_array($date)){
-      $fields['time_range'] = $date; // ['since' => 'YYYY-MM-DD', 'until' => 'YYYY-MM-DD']
+        $fields['time_range'] = $date;
+        $fields['time_increment'] = 1; //separa dia a dia
+       // ['since' => 'YYYY-MM-DD', 'until' => 'YYYY-MM-DD']
     }else{
       $fields['date_preset'] = $date;
     }
 
 
     $resp = $this->curl($url, $fields);
+    dd($resp);
     foreach ($resp as $key => $value) {
       $this->{$key} = $value;
     }
