@@ -7,7 +7,7 @@
             "email": "cloaction@gmail.com"
         }
     ],
-    "version": "1.0.0",
+    "version": "1.0.1",
     "minimum-stability": "dev",
     "require": {
       "php": "^5.3.3 || ^7.0"
