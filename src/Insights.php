@@ -7,6 +7,7 @@ class Insights extends ZeusFacebook{
 
   private $data = [];
   private $paging = [];
+  private $error = null;
   public function __construct(){
     parent::__construct();
 
@@ -46,12 +47,19 @@ class Insights extends ZeusFacebook{
 
 
     $resp = $this->curl($url, $fields);
-    dd($resp);
+    // dd($resp);
+    $this->error = null;
+    if(isset($resp['error'])){
+      $this->error = $resp['error'];
+    }
     foreach ($resp as $key => $value) {
       $this->{$key} = $value;
     }
   }
   private function toArray(){
+    if($this->error != null){
+      return $this->error;
+    }
     return [
       'data' => $this->data,
       'paging' => $this->paging
