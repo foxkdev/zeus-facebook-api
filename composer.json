@@ -1,5 +1,7 @@
 {
     "name": "kloppz/zeus-facebook-api",
+    "license": "MIT",
+    "type": "project",
     "authors": [
         {
             "name": "Carlos Lopez",
