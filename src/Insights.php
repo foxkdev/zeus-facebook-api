@@ -27,7 +27,7 @@ class Insights extends ZeusFacebook{
   private function call($date, $sort, $level = "", $fields = ""){
     $url = "act_".$this->getAdAccount()."/insights";
     if(empty($fields)){
-      $fields = "clicks,cpc,impressions,inline_link_click_ctr,unique_ctr,website_purchase_roas,spend,social_spend";
+      $fields = "clicks,cpc,impressions,inline_link_click_ctr,unique_ctr,website_purchase_roas,spend,social_spend,actions,action_values";
     }
 
     $fields = array(
